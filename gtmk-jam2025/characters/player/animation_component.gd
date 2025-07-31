@@ -21,3 +21,5 @@ func set_animation():
 		animated_sprite_2d.scale.x *= -1 #flips character horizontally
 		looks_right = not looks_right #inverts boolean
 	
+func play_animation(animation: String):
+	animated_sprite_2d.play(animation)

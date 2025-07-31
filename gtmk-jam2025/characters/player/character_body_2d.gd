@@ -1,18 +1,24 @@
 extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var anim_component: Node = $AnimationComponent
+@onready var gun: Node2D = $gun
 
+@export var player: CharacterBody2D
 @export var speed = 200
 @export var friction = 0.15
 @export var acceleration = 0.1
 
+var dead: bool = false
 func _ready() -> void:
 	anim_component.init(self, animated_sprite_2d)
 
 func _physics_process(delta):
-	movement()
-	anim_component.set_animation()
-	move_and_slide()
+	if not dead:
+		movement()
+		anim_component.set_animation()
+		if Input.is_action_just_pressed("shoot"):
+			gun.shoot()
+		move_and_slide()
 	
 	
 func movement():
@@ -36,3 +42,10 @@ func get_input():
 	if Input.is_action_pressed('up'):
 		input.y -= 1
 	return input
+
+func die():
+	dead = true
+	gun.queue_free()
+	anim_component.play_animation("die")
+	await animated_sprite_2d.animation_finished
+	queue_free()

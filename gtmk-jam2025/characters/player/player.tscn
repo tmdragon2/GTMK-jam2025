@@ -1,10 +1,34 @@
-[gd_scene load_steps=20 format=3 uid="uid://duyind1gtr8lg"]
+[gd_scene load_steps=33 format=3 uid="uid://duyind1gtr8lg"]
 
 [ext_resource type="Script" uid="uid://cwwjoaufqmmca" path="res://characters/player/character_body_2d.gd" id="1_xxgcw"]
 [ext_resource type="Texture2D" uid="uid://dc2gela3hahdl" path="res://icon.svg" id="2_exd8k"]
 [ext_resource type="Texture2D" uid="uid://c4ktnrasqe2xc" path="res://characters/player/player_character_idle.png" id="3_ixbpm"]
+[ext_resource type="Texture2D" uid="uid://boiygt2leqbqx" path="res://characters/player/player_character_death.png" id="3_rpf03"]
 [ext_resource type="Texture2D" uid="uid://d26bym4gbs8d4" path="res://characters/player/player_character_run.png" id="4_c6leb"]
 [ext_resource type="Script" uid="uid://cia8vrn00kga1" path="res://characters/player/animation_component.gd" id="5_dirf7"]
+[ext_resource type="Script" uid="uid://c11a64quhq8r8" path="res://characters/player/gun.gd" id="6_idpv6"]
+[ext_resource type="Texture2D" uid="uid://r3l0rplaak76" path="res://characters/player/shotgun.png" id="7_rpf03"]
+[ext_resource type="Texture2D" uid="uid://v87jyxtdgf0e" path="res://characters/player/shotgun_muzzleflash.png" id="8_x5dtk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lv4bx"]
+atlas = ExtResource("3_rpf03")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgd8i"]
+atlas = ExtResource("3_rpf03")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7b6hw"]
+atlas = ExtResource("3_rpf03")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4cx7u"]
+atlas = ExtResource("3_rpf03")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w53g3"]
+atlas = ExtResource("3_rpf03")
+region = Rect2(192, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_idpv6"]
 atlas = ExtResource("3_ixbpm")
@@ -65,6 +89,26 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_lv4bx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgd8i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7b6hw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4cx7u")
+}, {
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_w53g3")
+}],
+"loop": false,
+"name": &"die",
+"speed": 9.0
+}, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_idpv6")
 }, {
@@ -112,15 +156,47 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xxgcw"]
-radius = 64.4981
+radius = 44.1814
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kyfeq"]
+atlas = ExtResource("8_x5dtk")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5mkjs"]
+atlas = ExtResource("8_x5dtk")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yybc7"]
+atlas = ExtResource("8_x5dtk")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lv4bx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kyfeq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mkjs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yybc7")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("player") groups=["player"]]
+collision_mask = 2
 script = ExtResource("1_xxgcw")
+player = NodePath(".")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5dc8e")
-animation = &"run"
-frame_progress = 0.857226
+animation = &"die"
+frame = 4
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.25, 0.25)
@@ -128,3 +204,23 @@ shape = SubResource("CircleShape2D_xxgcw")
 
 [node name="AnimationComponent" type="Node" parent="."]
 script = ExtResource("5_dirf7")
+
+[node name="gun" type="Node2D" parent="."]
+script = ExtResource("6_idpv6")
+
+[node name="GunSprite" type="Sprite2D" parent="gun"]
+position = Vector2(4, -2)
+texture = ExtResource("7_rpf03")
+
+[node name="MuzzleflashAnimation" type="AnimatedSprite2D" parent="gun"]
+position = Vector2(28, 0)
+sprite_frames = SubResource("SpriteFrames_lv4bx")
+
+[node name="ReloadTimer" type="Timer" parent="gun"]
+wait_time = 9.22337e+18
+one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="animation_finished" from="gun/MuzzleflashAnimation" to="gun" method="_on_muzzleflash_animation_animation_finished"]
+[connection signal="timeout" from="gun/ReloadTimer" to="gun" method="_on_reload_timer_timeout"]
