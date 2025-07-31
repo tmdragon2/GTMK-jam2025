@@ -46,6 +46,8 @@ func get_input():
 		input.y -= 1
 	return input
 
+func key_check():
+	pass
 func die():
 	dead = true
 	gun.queue_free()

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://robc22xk2gh7"]
 
 [ext_resource type="Script" uid="uid://545dfmgnvvhi" path="res://characters/enemies/basic enemy/basic_enemy.gd" id="1_eqef7"]
-[ext_resource type="Texture2D" uid="uid://dc2gela3hahdl" path="res://icon.svg" id="2_if2qo"]
+[ext_resource type="Texture2D" uid="uid://dc2gela3hahdl" path="res://Assets/icon.svg" id="2_if2qo"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c5wvf"]
 animations = [{
