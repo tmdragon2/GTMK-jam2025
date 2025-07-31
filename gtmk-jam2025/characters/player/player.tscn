@@ -222,6 +222,8 @@ one_shot = true
 position = Vector2(12, -1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+ignore_rotation = false
+zoom = Vector2(0.75, 0.75)
 
 [connection signal="animation_finished" from="gun/MuzzleflashAnimation" to="gun" method="_on_muzzleflash_animation_animation_finished"]
 [connection signal="timeout" from="gun/ReloadTimer" to="gun" method="_on_reload_timer_timeout"]
