@@ -11,5 +11,6 @@ config_version=5
 [application]
 
 config/name="GTMK-jam2025"
+run/main_scene="uid://do1bu4v36fyfj"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
