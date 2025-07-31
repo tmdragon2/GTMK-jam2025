@@ -2,16 +2,17 @@ extends Node2D
 @onready var barrel: Marker2D = $Barrel
 @onready var reload_timer: Timer = $ReloadTimer
 @onready var muzzleflash_animation: AnimatedSprite2D = $MuzzleflashAnimation
-const PROJECTILE = preload("res://projectiles/Projectile.tscn")
 
+const PROJECTILE = preload("res://projectiles/Projectile.tscn")
 var projectile_node: Node
 var points_right: bool = true
 var can_shoot = true
+var action_recorder: Node
 const reload_time = 0.5 #time in seconds
 
-func init(player, projectiles):
+func init(player, projectiles, action_recorder_node):
 	projectile_node = projectiles
-	
+	action_recorder = action_recorder_node
 func _ready() -> void:
 	muzzleflash_animation.visible = false
 	
@@ -29,6 +30,8 @@ func shoot():
 		projectile.rotation = rotation
 		projectile.global_position = barrel.global_position
 		projectile_node.add_child(projectile)
+		
+		action_recorder.update_shoot_array(barrel.global_position, rotation)
 		
 
 

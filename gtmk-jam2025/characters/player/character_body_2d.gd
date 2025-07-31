@@ -2,6 +2,8 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var anim_component: Node = $AnimationComponent
 @onready var gun: Node2D = $gun
+@onready var action_recorder: Node = $ActionRecorder
+
 
 @export var projectile_node: Node
 @export var player: CharacterBody2D
@@ -12,7 +14,7 @@ extends CharacterBody2D
 var dead: bool = false
 func _ready() -> void:
 	anim_component.init(self, animated_sprite_2d)
-	gun.init(self, projectile_node)
+	gun.init(self, projectile_node, action_recorder)
 
 func _physics_process(delta):
 	if not dead:
@@ -50,3 +52,12 @@ func die():
 	anim_component.play_animation("die")
 	await animated_sprite_2d.animation_finished
 	queue_free()
+
+func get_position_array():
+	var position_array = action_recorder.position_array
+	return position_array
+func get_shoot_array():
+	var shooting_array = action_recorder.shooting_array
+	return shooting_array
+func next_loop():
+	pass
