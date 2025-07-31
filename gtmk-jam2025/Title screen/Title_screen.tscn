@@ -1,0 +1,75 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbxd70h2fg433"]
+
+[ext_resource type="Script" uid="uid://b5c2x0y1nexin" path="res://Title screen/title_screen.gd" id="1_cr2l3"]
+[ext_resource type="AudioStream" uid="uid://mbfa81sekpgj" path="res://Assets/aztecthingy4.wav" id="2_so6ex"]
+
+[node name="Title" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cr2l3")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_so6ex")
+autoplay = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Mainbuttons" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -141.0
+offset_top = 176.0
+offset_right = 141.0
+offset_bottom = 277.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play" type="Button" parent="ColorRect/Mainbuttons"]
+layout_mode = 2
+text = "Play"
+
+[node name="Options" type="Button" parent="ColorRect/Mainbuttons"]
+layout_mode = 2
+text = "Options"
+
+[node name="Quit" type="Button" parent="ColorRect/Mainbuttons"]
+layout_mode = 2
+text = "Quit"
+
+[node name="Options" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Options"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -190.5
+offset_right = 190.5
+offset_bottom = 137.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 100
+text = "Options"
+
+[connection signal="pressed" from="ColorRect/Mainbuttons/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="ColorRect/Mainbuttons/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="ColorRect/Mainbuttons/Quit" to="." method="_on_quit_pressed"]
