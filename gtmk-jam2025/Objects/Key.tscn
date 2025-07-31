@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://di7nm64p0hj3l"]
+
+[ext_resource type="Texture2D" uid="uid://bi1clvrhjuufe" path="res://Assets/key.png" id="1_gp5im"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxhtd"]
+
+[node name="Node2D" type="Node2D" groups=["Collectable"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_gp5im")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_vxhtd")
