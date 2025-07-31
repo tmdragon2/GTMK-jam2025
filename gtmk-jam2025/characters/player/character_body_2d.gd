@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var anim_component: Node = $AnimationComponent
 @onready var gun: Node2D = $gun
 
+@export var projectile_node: Node
 @export var player: CharacterBody2D
 @export var speed = 200
 @export var friction = 0.15
@@ -11,6 +12,7 @@ extends CharacterBody2D
 var dead: bool = false
 func _ready() -> void:
 	anim_component.init(self, animated_sprite_2d)
+	gun.init(self, projectile_node)
 
 func _physics_process(delta):
 	if not dead:
@@ -23,7 +25,6 @@ func _physics_process(delta):
 	
 func movement():
 	var direction = get_input()
-	print(direction)
 	if direction.length() > 0:
 		velocity = velocity.lerp(direction.normalized() * speed, acceleration)
 	else:

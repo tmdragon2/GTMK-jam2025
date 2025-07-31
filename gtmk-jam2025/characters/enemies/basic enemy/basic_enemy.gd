@@ -20,3 +20,6 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 			body.die()
 		else: print(str(body) + " has no die() function despite being in the player group")
 		
+func die():
+	queue_free()
+	

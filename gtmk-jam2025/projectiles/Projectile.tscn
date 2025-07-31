@@ -1,0 +1,81 @@
+[gd_scene load_steps=11 format=3 uid="uid://dy18lxq8a8jma"]
+
+[ext_resource type="Texture2D" uid="uid://b5rlkbtjdmovx" path="res://projectiles/shotgun_projectile.png" id="1_eeyek"]
+[ext_resource type="Script" uid="uid://c4nox8dc0e4ru" path="res://projectiles/projectile.gd" id="1_mbled"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3voha"]
+atlas = ExtResource("1_eeyek")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d27jy"]
+atlas = ExtResource("1_eeyek")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_juld2"]
+atlas = ExtResource("1_eeyek")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbled"]
+atlas = ExtResource("1_eeyek")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3b5a"]
+atlas = ExtResource("1_eeyek")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8bxk0"]
+atlas = ExtResource("1_eeyek")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3voha"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3voha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d27jy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_juld2")
+}],
+"loop": false,
+"name": &"collision",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbled")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3b5a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8bxk0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mbled"]
+radius = 2.0
+
+[node name="Projectile" type="CharacterBody2D"]
+script = ExtResource("1_mbled")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3voha")
+animation = &"collision"
+autoplay = "default"
+frame = 2
+frame_progress = 1.0
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(12, 0)
+shape = SubResource("CircleShape2D_mbled")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

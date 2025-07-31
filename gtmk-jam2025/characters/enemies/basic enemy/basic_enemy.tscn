@@ -18,9 +18,9 @@ animations = [{
 radius = 30.0167
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_if2qo"]
-radius = 31.0161
+radius = 29.0
 
-[node name="BasicEnemy" type="CharacterBody2D"]
+[node name="BasicEnemy" type="CharacterBody2D" groups=["enemies"]]
 script = ExtResource("1_eqef7")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
