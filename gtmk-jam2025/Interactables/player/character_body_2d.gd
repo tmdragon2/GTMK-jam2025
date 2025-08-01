@@ -17,6 +17,7 @@ func _ready() -> void:
 	gun.init(self, projectile_node, action_recorder)
 
 func _physics_process(delta):
+	pause_check()
 	if not dead:
 		movement()
 		anim_component.set_animation()
@@ -45,7 +46,10 @@ func get_input():
 	if Input.is_action_pressed('up'):
 		input.y -= 1
 	return input
-
+	
+func pause_check():
+	if Input.is_action_just_pressed("escape"):
+		get_tree().change_scene_to_file("res://Title screen/Title_screen.tscn")
 func key_check():
 	pass
 func die():

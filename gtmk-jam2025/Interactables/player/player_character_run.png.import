@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://v87jyxtdgf0e"
-path="res://.godot/imported/shotgun_muzzleflash.png-107905f9b1ae5759c8f8469e6fa535ba.ctex"
+uid="uid://d26bym4gbs8d4"
+path="res://.godot/imported/player_character_run.png-00017b3d271a8512879a5138ed440791.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/player/shotgun_muzzleflash.png"
-dest_files=["res://.godot/imported/shotgun_muzzleflash.png-107905f9b1ae5759c8f8469e6fa535ba.ctex"]
+source_file="res://Interactables/player/player_character_run.png"
+dest_files=["res://.godot/imported/player_character_run.png-00017b3d271a8512879a5138ed440791.ctex"]
 
 [params]
 

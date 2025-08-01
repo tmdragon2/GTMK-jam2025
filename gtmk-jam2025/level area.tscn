@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://dvwbs545cgqp0" path="res://placeholder assets/tileset.png" id="1_rofm1"]
 [ext_resource type="Texture2D" uid="uid://bt0j8elnv6tgi" path="res://placeholder assets/ground.png" id="2_4dhyi"]
-[ext_resource type="PackedScene" uid="uid://duyind1gtr8lg" path="res://characters/player/player.tscn" id="3_orff6"]
-[ext_resource type="PackedScene" uid="uid://robc22xk2gh7" path="res://characters/enemies/basic enemy/basic_enemy.tscn" id="4_cd1la"]
+[ext_resource type="PackedScene" uid="uid://duyind1gtr8lg" path="res://Interactables/player/player.tscn" id="3_orff6"]
+[ext_resource type="PackedScene" uid="uid://robc22xk2gh7" path="res://Interactables/enemies/basic enemy/basic_enemy.tscn" id="4_cd1la"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_miqnl"]
 texture = ExtResource("1_rofm1")

@@ -5,7 +5,7 @@ extends Control
 func _ready() -> void:
 	options.visible = false
 func _on_play_pressed() -> void:
-	get_tree().change_scene_to_file("res://Title screen/level area.tscn")
+	get_tree().change_scene_to_file("res://level area.tscn")
 
 
 func _on_quit_pressed() -> void:
@@ -17,3 +17,7 @@ func _on_options_pressed() -> void:
 	mainbuttons.visible = false
 	options.visible = true
 	get_tree()
+
+
+func _on_settings_leave_pressed() -> void:
+	get_tree().change_scene_to_file("res://Title screen/Title_screen.tscn")
