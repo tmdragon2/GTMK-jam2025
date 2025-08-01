@@ -1,27 +1,17 @@
-extends CharacterBody2D
-const SPEED = 100
-@onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
-@export var player: CharacterBody2D
-
+extends Enemy
 func _process(delta: float) -> void:
-	if player != null:
-		move_to_target(player.global_position)
+	if player:
 		move_and_slide()
 	
-func move_to_target(target: Vector2):
-	nav_agent.target_position = target
-	var dir = to_local(nav_agent.get_next_path_position()).normalized()
-	velocity = dir * SPEED
-
+func _physics_process(delta: float) -> void:
+	set_animation()
+	if player and not dead:
+		move_to_target(player.global_position)
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player"):
-		if body.has_method("die"):
-			body.die()
-		else: print(str(body) + " has no die() function despite being in the player group")
+	body_entered_hitbox(body)
 		
-func die():
-	queue_free()
+
 	
 func next_loop():
 	queue_free()

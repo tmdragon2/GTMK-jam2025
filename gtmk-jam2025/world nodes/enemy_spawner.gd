@@ -1,7 +1,6 @@
 extends Node
 @export var player: CharacterBody2D
-const GHOST_PLAYER = preload("res://characters/enemies/ghost_player.tscn")
-
+const GHOST_PLAYER = preload("res://characters/enemies/ghost_player/ghost_player.tscn")
 func next_loop():
 	spawn_enemies()
 	spawn_ghost_players()

@@ -4,7 +4,7 @@ const PROJECTILE = preload("res://projectiles/Projectile.tscn")
 var position_array: Array
 var shooting_array: Array
 var bullets_shot = 0
-var frame_counter = 0
+var frame_counter = 1
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("next_loop"):
@@ -22,5 +22,5 @@ func _physics_process(delta: float) -> void:
 			bullets_shot += 1
 
 func next_loop():
-	frame_counter = 0
+	frame_counter = 1
 	bullets_shot = 0

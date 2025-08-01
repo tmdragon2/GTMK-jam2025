@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2xwy3ttd243v"]
+
+[ext_resource type="Script" uid="uid://br1nq71ahsgxj" path="res://characters/enemies/ghost_player/ghost_player.gd" id="1_45qtl"]
+[ext_resource type="Texture2D" uid="uid://dc2gela3hahdl" path="res://Assets/icon.svg" id="2_svs6v"]
+
+[node name="GhostPlayer" type="CharacterBody2D"]
+script = ExtResource("1_45qtl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_svs6v")
