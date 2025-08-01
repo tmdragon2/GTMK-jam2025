@@ -15,6 +15,10 @@ run/main_scene="uid://do1bu4v36fyfj"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://Assets/icon.svg"
 
+[autoload]
+
+LoopCount="*res://autoload/loop_count.gd"
+
 [global_group]
 
 player=""

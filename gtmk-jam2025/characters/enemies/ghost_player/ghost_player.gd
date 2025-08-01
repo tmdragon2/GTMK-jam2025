@@ -12,7 +12,6 @@ func _physics_process(delta: float) -> void:
 	if position_array.size() > frame_counter:
 		position = position_array[frame_counter]
 		frame_counter += 1
-		print(shooting_array)
 	if shooting_array.size() > bullets_shot:
 		if frame_counter == shooting_array[bullets_shot][0]:
 			var projectile = PROJECTILE.instantiate()

@@ -39,7 +39,6 @@ func die():
 	dead = true
 	velocity = Vector2.ZERO
 	if animated_sprite.sprite_frames.has_animation("die"):
-		print("die")
 		animated_sprite.play("die")
 		animated_sprite.self_modulate.a = .5
 		
