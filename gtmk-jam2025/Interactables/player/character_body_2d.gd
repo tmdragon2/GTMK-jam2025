@@ -57,6 +57,7 @@ func die():
 	gun.queue_free()
 	anim_component.play_animation("die")
 	await animated_sprite_2d.animation_finished
+	get_tree().change_scene_to_file("res://UI/death_screen.tscn")
 	queue_free()
 
 func get_position_array():

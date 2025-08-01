@@ -189,6 +189,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("player") groups=["player"]]
+collision_layer = 17
 collision_mask = 2
 script = ExtResource("1_xxgcw")
 player = NodePath(".")

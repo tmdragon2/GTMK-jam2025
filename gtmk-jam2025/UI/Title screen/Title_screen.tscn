@@ -1,0 +1,146 @@
+[gd_scene load_steps=6 format=3 uid="uid://bbxd70h2fg433"]
+
+[ext_resource type="Script" uid="uid://b5c2x0y1nexin" path="res://UI/Title screen/title_screen.gd" id="1_cr2l3"]
+[ext_resource type="AudioStream" uid="uid://duc6xptvq1hex" path="res://menu.wav" id="2_so6ex"]
+[ext_resource type="Script" uid="uid://bw4apdkdyhl3h" path="res://UI/Title screen/audioslider.gd" id="3_so6ex"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_cr2l3"]
+color = Color(0.185497, 0.416209, 1, 1)
+thickness = 11
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_so6ex"]
+color = Color(1, 1, 1, 1)
+thickness = 11
+
+[node name="Title" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cr2l3")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_so6ex")
+autoplay = true
+bus = &"Music"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Mainbuttons" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -141.0
+offset_top = 176.0
+offset_right = 141.0
+offset_bottom = 277.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play" type="Button" parent="ColorRect/Mainbuttons"]
+layout_mode = 2
+text = "Play"
+
+[node name="Options" type="Button" parent="ColorRect/Mainbuttons"]
+layout_mode = 2
+text = "Options"
+
+[node name="Quit" type="Button" parent="ColorRect/Mainbuttons"]
+layout_mode = 2
+text = "Quit"
+
+[node name="Options" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="Options"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = 142.0
+offset_right = 84.0
+offset_bottom = 195.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label2" type="Label" parent="Options/BoxContainer"]
+layout_mode = 2
+text = "Volume: "
+
+[node name="Audioslider" type="HSlider" parent="Options/BoxContainer/Label2"]
+layout_mode = 0
+offset_top = 3.0
+offset_right = 181.0
+offset_bottom = 49.0
+theme_override_styles/slider = SubResource("StyleBoxLine_cr2l3")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_so6ex")
+min_value = -80.0
+max_value = 0.0
+script = ExtResource("3_so6ex")
+audiobus_name = "Music"
+
+[node name="Button3" type="Button" parent="Options"]
+layout_mode = 2
+offset_left = 435.0
+offset_top = 215.0
+offset_right = 717.0
+offset_bottom = 304.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button2" type="Button" parent="Options"]
+layout_mode = 2
+offset_left = 435.0
+offset_top = 343.0
+offset_right = 717.0
+offset_bottom = 431.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Credits"
+
+[node name="Settings_leave" type="Button" parent="Options"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -100.0
+offset_bottom = 50.0
+grow_horizontal = 0
+text = "Back"
+
+[node name="Label" type="Label" parent="Options"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -190.5
+offset_right = 190.5
+offset_bottom = 137.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 100
+text = "Options"
+
+[connection signal="pressed" from="ColorRect/Mainbuttons/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="ColorRect/Mainbuttons/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="ColorRect/Mainbuttons/Quit" to="." method="_on_quit_pressed"]
+[connection signal="value_changed" from="Options/BoxContainer/Label2/Audioslider" to="Options/BoxContainer/Label2/Audioslider" method="_on_value_changed"]
+[connection signal="pressed" from="Options/Settings_leave" to="." method="_on_settings_leave_pressed"]
