@@ -66,10 +66,7 @@ script = ExtResource("1_mbled")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3voha")
-animation = &"collision"
 autoplay = "default"
-frame = 2
-frame_progress = 1.0
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 6

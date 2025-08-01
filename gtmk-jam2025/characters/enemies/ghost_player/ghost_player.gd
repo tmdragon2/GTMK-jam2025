@@ -4,9 +4,11 @@ const PROJECTILE = preload("res://projectiles/Projectile.tscn")
 var position_array: Array
 var shooting_array: Array
 var bullets_shot = 0
-var frame_counter = 1
+var frame_counter = 0
 
 func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("next_loop"):
+		next_loop()
 	if position_array.size() > frame_counter:
 		position = position_array[frame_counter]
 		frame_counter += 1
@@ -18,3 +20,7 @@ func _physics_process(delta: float) -> void:
 			projectile.global_position = shooting_array[bullets_shot][1]
 			projectile_node.add_child(projectile)
 			bullets_shot += 1
+
+func next_loop():
+	frame_counter = 0
+	bullets_shot = 0

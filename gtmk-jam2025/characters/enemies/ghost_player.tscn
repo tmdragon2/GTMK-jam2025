@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b2xwy3ttd243v"]
 
 [ext_resource type="Script" uid="uid://br1nq71ahsgxj" path="res://characters/enemies/ghost_player/ghost_player.gd" id="1_8xtq8"]
-[ext_resource type="Texture2D" uid="uid://dc2gela3hahdl" path="res://icon.svg" id="2_4w8jk"]
+[ext_resource type="Texture2D" uid="uid://dc2gela3hahdl" path="res://Assets/icon.svg" id="2_4w8jk"]
 
 [node name="GhostPlayer" type="CharacterBody2D"]
 script = ExtResource("1_8xtq8")

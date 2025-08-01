@@ -23,3 +23,5 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 func die():
 	queue_free()
 	
+func next_loop():
+	queue_free()

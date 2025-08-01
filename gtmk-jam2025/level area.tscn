@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://do1bu4v36fyfj"]
+[gd_scene load_steps=12 format=3 uid="uid://do1bu4v36fyfj"]
 
 [ext_resource type="Texture2D" uid="uid://dvwbs545cgqp0" path="res://placeholder assets/tileset.png" id="1_rofm1"]
 [ext_resource type="Texture2D" uid="uid://bt0j8elnv6tgi" path="res://placeholder assets/ground.png" id="2_4dhyi"]
 [ext_resource type="PackedScene" uid="uid://duyind1gtr8lg" path="res://characters/player/player.tscn" id="3_orff6"]
 [ext_resource type="PackedScene" uid="uid://robc22xk2gh7" path="res://characters/enemies/basic enemy/basic_enemy.tscn" id="4_cd1la"]
+[ext_resource type="Script" uid="uid://4l63xmvmayg7" path="res://UI/loop_counter.gd" id="5_qod0m"]
+[ext_resource type="Script" uid="uid://d3m2glhbbgx1p" path="res://world nodes/enemy_spawner.gd" id="6_ral83"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_miqnl"]
 texture = ExtResource("1_rofm1")
@@ -593,3 +595,17 @@ position = Vector2(1012, 235)
 player = NodePath("../Player")
 
 [node name="Projectiles" type="Node" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 12.0
+offset_top = 7.0
+offset_right = 60.0
+offset_bottom = 30.0
+text = "loop 0"
+script = ExtResource("5_qod0m")
+
+[node name="EnemySpawner" type="Node" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("6_ral83")
+player = NodePath("../Player")
