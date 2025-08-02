@@ -3,15 +3,15 @@ extends CharacterBody2D
 @onready var anim_component: Node = $AnimationComponent
 @onready var gun: Node2D = $gun
 @onready var action_recorder: Node = $ActionRecorder
-
-
 @export var projectile_node: Node
 @export var player: CharacterBody2D
 @export var speed = 200
 @export var friction = 0.15
 @export var acceleration = 0.1
 
+var keytaken: bool = false
 var dead: bool = false
+
 func _ready() -> void:
 	anim_component.init(self, animated_sprite_2d)
 	gun.init(self, projectile_node, action_recorder)
@@ -66,5 +66,3 @@ func get_position_array():
 func get_shoot_array():
 	var shooting_array = action_recorder.shooting_array
 	return shooting_array
-func next_loop():
-	pass

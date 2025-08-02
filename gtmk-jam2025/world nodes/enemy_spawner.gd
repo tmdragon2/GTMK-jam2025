@@ -1,9 +1,9 @@
 extends Node
 @export var player: CharacterBody2D
-
-const GHOST_PLAYER = preload("res://characters/enemies/ghost_player/ghost_player.tscn")
-const BASIC_ENEMY = preload("res://characters/enemies/basic enemy/basic_enemy.tscn")
+const GHOST_PLAYER = preload("res://Interactables/enemies/ghost_player/ghost_player.tscn")
+const BASIC_ENEMY = preload("res://Interactables/enemies/basic enemy/basic_enemy.tscn")
 const BASIC_ENEMY_COST: int = 1
+@onready var enemy_spawn_locations: Node = $"../EnemySpawnLocations"
 
 var enemy_points = 0
 func next_loop():
@@ -16,12 +16,21 @@ func spawn_enemies():
 	
 	while enemy_points != 0:
 		var chosen_enemy = available_enemies.pick_random()
-		var point_cost = get_cost(chosen_enemy)
-		var max_enemies = floor(enemy_points / point_cost)
+		var enemy_cost = get_cost(chosen_enemy)
+		var max_enemies = floor(enemy_points / enemy_cost)
 		if max_enemies == 0:
 			available_enemies.erase(chosen_enemy)
 		else:
-			var spawns_amount = randi_range(0, max_enemies)
+			var spawn_amount = randi_range(0, max_enemies)
+			for i in spawn_amount:
+				enemy_points -= enemy_cost
+				
+				var enemy_spawn = enemy_spawn_locations.get_children().pick_random()
+				var enemy = chosen_enemy.instantiate()
+				enemy.position = enemy_spawn.position
+				enemy.player = player
+				get_parent().add_child(enemy)
+			
 
 		
 	
