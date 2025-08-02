@@ -6,7 +6,7 @@ signal dooropened
 func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
 	if body.is_in_group("player"):
 		if keytaken == false:
-			keytaken = true
+			body.keytaken = true
 			queue_free()
 
 func _process(delta: float) -> void:

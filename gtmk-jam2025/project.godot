@@ -15,6 +15,23 @@ run/main_scene="uid://bbxd70h2fg433"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://Assets/icon.svg"
 
+[autoload]
+
+LoopCount="*res://autoloads/loop_count.gd"
+SignalBus="*res://autoloads/signal_bus.gd"
+
+[file_customization]
+
+folder_colors={
+"res://Assets/": "red",
+"res://Interactables/": "yellow",
+"res://UI/": "blue",
+"res://autoloads/": "orange",
+"res://placeholder assets/": "green",
+"res://projectiles/": "teal",
+"res://world nodes/": "purple"
+}
+
 [global_group]
 
 player=""

@@ -1,7 +1,6 @@
-extends CharacterBody2D
+extends Enemy
 const SPEED = 100
-@onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
-@export var player: CharacterBody2D
+
 
 func _process(delta: float) -> void:
 	if player != null:

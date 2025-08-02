@@ -4,10 +4,16 @@
 [ext_resource type="Script" uid="uid://0sau8gco8r2j" path="res://Interactables/Objects/key.gd" id="1_gynm6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vxhtd"]
+size = Vector2(9.33333, 12.6667)
 
+<<<<<<< HEAD
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gynm6"]
 
 [node name="Node2D" type="Node2D" groups=["Collectable"]]
+=======
+[node name="Key" type="Node2D" groups=["Collectable"]]
+scale = Vector2(1.5, 1.5)
+>>>>>>> wassersaft-branch
 script = ExtResource("1_gynm6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -16,7 +22,12 @@ texture = ExtResource("1_gp5im")
 [node name="Playercheck" type="Area2D" parent="."]
 collision_mask = 17
 
+<<<<<<< HEAD
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Playercheck"]
+=======
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.666667, 1)
+>>>>>>> wassersaft-branch
 shape = SubResource("RectangleShape2D_vxhtd")
 
 [node name="Wallcheck" type="Area2D" parent="."]
