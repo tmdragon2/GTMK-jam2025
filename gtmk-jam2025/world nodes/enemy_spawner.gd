@@ -1,20 +1,12 @@
 extends Node
 @export var player: CharacterBody2D
-<<<<<<< Updated upstream
 const GHOST_PLAYER = preload("res://Interactables/enemies/ghost_player/ghost_player.tscn")
 const BASIC_ENEMY = preload("res://Interactables/enemies/basic enemy/basic_enemy.tscn")
 const BASIC_ENEMY_COST: int = 1
 @onready var enemy_spawn_locations: Node = $"../EnemySpawnLocations"
-=======
 @onready var navregion: NavigationRegion2D = $"../NavigationRegion2D"
 
 
-const GHOST_PLAYER = preload("res://characters/enemies/ghost_player/ghost_player.tscn")
-const BASIC_ENEMY = preload("res://characters/enemies/basic enemy/basic_enemy.tscn")
-const BASIC_ENEMY_COST: int = 1
-const LEVEL_WIDTH = 864
-const LEVEL_HEIGHT = 480
->>>>>>> Stashed changes
 
 var enemy_points = 0
 func next_loop():
@@ -31,7 +23,6 @@ func spawn_enemies():
 		if max_enemies == 0:
 			available_enemies.erase(chosen_enemy)
 		else:
-<<<<<<< Updated upstream
 			var spawn_amount = randi_range(0, max_enemies)
 			for i in spawn_amount:
 				enemy_points -= enemy_cost
@@ -42,29 +33,7 @@ func spawn_enemies():
 				enemy.player = player
 				get_parent().add_child(enemy)
 			
-=======
-			var spawns_amount = randi_range(0, max_enemies)
-			var spawn_location = Vector2(randi_range(0, 500), randi_range(0, 500))
-			
-			var nav_polygon = navregion.navigation_polygon
-			var vertices: PackedVector2Array = nav_polygon.vertices
 
-			var all_points: PackedVector2Array = PackedVector2Array()
-			
-			for polygon in nav_polygon.polygons:
-				for i in polygon:
-					var point: Vector2 = vertices[i]
-					all_points.append(point)
-					if Geometry2D.is_point_in_polygon(spawn_location, all_points):
-						print("Point is inside")
-			
-			
-			var enemy = chosen_enemy.instantiate()
-			enemy.position = Vector2.ZERO
-			enemy.player= player
-			add_child(enemy)
-			enemy_points -= spawns_amount * point_cost
->>>>>>> Stashed changes
 
 		
 	
