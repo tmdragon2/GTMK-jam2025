@@ -1,5 +1,5 @@
 extends Node2D
-@onready var key_location = preload("res://Interactables/Objects/Key.tscn")
+@onready var key_location = preload("res://Interactables/enemies/Enemy spawner/Key_spawner.tscn")
 
 @export var pointA: Vector2 = Vector2(50,50)
 @export var pointB: Vector2 = Vector2(1100, 600)
