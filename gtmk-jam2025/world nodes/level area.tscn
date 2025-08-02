@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bt0j8elnv6tgi" path="res://placeholder assets/ground.png" id="3_jhyv0"]
 [ext_resource type="PackedScene" uid="uid://duyind1gtr8lg" path="res://Interactables/player/player.tscn" id="4_6fli2"]
 [ext_resource type="PackedScene" uid="uid://robc22xk2gh7" path="res://Interactables/enemies/basic enemy/basic_enemy.tscn" id="5_krpfq"]
-[ext_resource type="PackedScene" uid="uid://di7nm64p0hj3l" path="res://Interactables/Objects/Key.tscn" id="6_0wrpr"]
+[ext_resource type="PackedScene" uid="uid://dl5wtektmweut" path="res://Interactables/enemies/Enemy spawner/Key_spawner.tscn" id="6_7a4lu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_miqnl"]
 texture = ExtResource("2_epq7l")
@@ -611,5 +611,5 @@ player = NodePath("../Player")
 
 [node name="Projectiles" type="Node" parent="."]
 
-[node name="Node2D" parent="." instance=ExtResource("6_0wrpr")]
-position = Vector2(827, 343)
+[node name="Node2D" parent="." instance=ExtResource("6_7a4lu")]
+position = Vector2(847, 266)

@@ -49,7 +49,7 @@ func get_input():
 	
 func pause_check():
 	if Input.is_action_just_pressed("escape"):
-		get_tree().change_scene_to_file("res://Title screen/Title_screen.tscn")
+		get_tree().change_scene_to_file("res://UI/Title screen/Title_screen.tscn")
 func key_check():
 	pass
 func die():

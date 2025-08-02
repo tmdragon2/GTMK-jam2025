@@ -13,3 +13,8 @@ func _process(delta: float) -> void:
 	if keytaken == true: 
 		if doorcheck == true: 
 			emit_signal("dooropened")
+
+
+
+func _on_wallcheck_body_entered(body: Node2D) -> void:
+	queue_free()
