@@ -26,6 +26,7 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 		queue_free()
 	
 func die():
+	death_sound_player.play()
 	dying = true
 	dead = true
 	if animated_sprite.sprite_frames.has_animation("die"):
