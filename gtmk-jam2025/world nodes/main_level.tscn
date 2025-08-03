@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://idsu2orqbjpb"]
+[gd_scene load_steps=18 format=3 uid="uid://idsu2orqbjpb"]
 
 [ext_resource type="Texture2D" uid="uid://bs0geqkrvy3v7" path="res://placeholder assets/Dungeon tileset-modified.png" id="1_dtjg1"]
 [ext_resource type="PackedScene" uid="uid://duyind1gtr8lg" path="res://Interactables/player/player.tscn" id="2_r5nnl"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://3nod1tosp417" path="res://Assets/Free-Undead-Tileset-Top-Down-Pixel-Art/Tiled_files/details.png" id="3_weolx"]
 [ext_resource type="Texture2D" uid="uid://b08je2rfr6ex1" path="res://Assets/Free-Undead-Tileset-Top-Down-Pixel-Art/Tiled_files/Ground_rocks.png" id="4_6h4ae"]
 [ext_resource type="PackedScene" uid="uid://dl5wtektmweut" path="res://Interactables/enemies/Enemy spawner/Key_spawner.tscn" id="4_hme4t"]
-[ext_resource type="Script" uid="uid://doc0e4n31t5nw" path="res://world nodes/label.gd" id="6_6h4ae"]
 [ext_resource type="PackedScene" uid="uid://clottgdvxykia" path="res://Interactables/Objects/Key.tscn" id="6_h3l1i"]
 [ext_resource type="PackedScene" uid="uid://sj07crlhpqb1" path="res://Interactables/Objects/Door.tscn" id="7_8qlse"]
 [ext_resource type="AudioStream" uid="uid://mbfa81sekpgj" path="res://Assets/aztecthingy4.wav" id="11_weolx"]
@@ -3530,13 +3529,6 @@ layer_1/tile_data = PackedInt32Array(-4587649, 196608, 7, -4522113, 196608, 7, -
 position = Vector2(-32, 40)
 projectile_node = NodePath("../Projectiles")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Player"]
-
-[node name="Label" type="Label" parent="Player/CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 23.0
-script = ExtResource("6_6h4ae")
-
 [node name="Projectiles" type="Node" parent="."]
 
 [node name="EnemySpawner" type="Node" parent="." node_paths=PackedStringArray("player")]
@@ -3602,15 +3594,6 @@ scale = Vector2(2.10201, 1.60104)
 
 [node name="PlayerSpawnLocations" type="Node" parent="."]
 
-[node name="Node2D" type="Node2D" parent="PlayerSpawnLocations"]
-position = Vector2(-400, -160)
-
-[node name="Node2D2" type="Node2D" parent="PlayerSpawnLocations"]
-position = Vector2(-240, -168)
-
-[node name="Node2D3" type="Node2D" parent="PlayerSpawnLocations"]
-position = Vector2(-96, -176)
-
 [node name="Node2D4" type="Node2D" parent="PlayerSpawnLocations"]
 position = Vector2(0, -152)
 
@@ -3622,12 +3605,6 @@ position = Vector2(256, -168)
 
 [node name="Node2D7" type="Node2D" parent="PlayerSpawnLocations"]
 position = Vector2(344, -160)
-
-[node name="Node2D8" type="Node2D" parent="PlayerSpawnLocations"]
-position = Vector2(-400, 0)
-
-[node name="Node2D9" type="Node2D" parent="PlayerSpawnLocations"]
-position = Vector2(-248, 0)
 
 [node name="Node2D10" type="Node2D" parent="PlayerSpawnLocations"]
 position = Vector2(-104, 8)
@@ -3643,12 +3620,6 @@ position = Vector2(256, -8)
 
 [node name="Node2D14" type="Node2D" parent="PlayerSpawnLocations"]
 position = Vector2(352, 8)
-
-[node name="Node2D15" type="Node2D" parent="PlayerSpawnLocations"]
-position = Vector2(-384, 136)
-
-[node name="Node2D16" type="Node2D" parent="PlayerSpawnLocations"]
-position = Vector2(-224, 120)
 
 [node name="Node2D17" type="Node2D" parent="PlayerSpawnLocations"]
 position = Vector2(-88, 120)
@@ -3667,5 +3638,6 @@ position = Vector2(352, 112)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_weolx")
+volume_db = -10.0
 autoplay = true
 script = ExtResource("12_6h4ae")

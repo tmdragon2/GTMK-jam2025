@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://duyind1gtr8lg"]
+[gd_scene load_steps=38 format=3 uid="uid://duyind1gtr8lg"]
 
 [ext_resource type="Script" uid="uid://cwwjoaufqmmca" path="res://Interactables/player/Player.gd" id="1_xxgcw"]
 [ext_resource type="Texture2D" uid="uid://dc2gela3hahdl" path="res://Assets/icon.svg" id="2_exd8k"]
@@ -12,6 +12,8 @@
 [ext_resource type="Script" uid="uid://dkojsodkjtlmm" path="res://Interactables/player/action_recorder.gd" id="10_x5dtk"]
 [ext_resource type="Texture2D" uid="uid://ca83utm0xv87p" path="res://arrow.png" id="11_wyhmo"]
 [ext_resource type="AudioStream" uid="uid://c4ac73drkp3pt" path="res://Assets/shotgun.wav" id="12_eyay0"]
+[ext_resource type="Script" uid="uid://doc0e4n31t5nw" path="res://world nodes/loopdisplay.gd" id="13_cakch"]
+[ext_resource type="Script" uid="uid://cieotsgdqceqy" path="res://Interactables/player/timer.gd" id="14_4y5gc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lv4bx"]
 atlas = ExtResource("3_rpf03")
@@ -228,6 +230,7 @@ position = Vector2(12, -1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 ignore_rotation = false
+zoom = Vector2(1, 0.8)
 
 [node name="ActionRecorder" type="Node" parent="."]
 script = ExtResource("10_x5dtk")
@@ -241,7 +244,22 @@ texture = ExtResource("11_wyhmo")
 
 [node name="ShootSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_eyay0")
-volume_db = -15.0
+volume_db = -20.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 536.0
+offset_right = 630.0
+offset_bottom = 23.0
+script = ExtResource("13_cakch")
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+offset_left = 536.0
+offset_top = 40.0
+offset_right = 576.0
+offset_bottom = 63.0
+script = ExtResource("14_4y5gc")
 
 [connection signal="animation_finished" from="gun/MuzzleflashAnimation" to="gun" method="_on_muzzleflash_animation_animation_finished"]
 [connection signal="timeout" from="gun/ReloadTimer" to="gun" method="_on_reload_timer_timeout"]

@@ -5,9 +5,9 @@ const GHOST_PLAYER = preload("res://Interactables/enemies/ghost_player/ghost_pla
 const BASIC_ENEMY = preload("res://Interactables/enemies/basic enemy/basic_enemy.tscn")
 const BASIC_ENEMY_COST: int = 1
 const SHAMAN_ENEMY = preload("res://Interactables/enemies/basic enemy/shaman_enemy.tscn")
-const SHAMAN_ENEMY_COST: int = 4
+const SHAMAN_ENEMY_COST: int = 8
 const SUICIDE_ENEMY = preload("res://Interactables/enemies/basic enemy/suicide_enemy.tscn")
-const SUICIDE_ENEMY_COST: int = 6
+const SUICIDE_ENEMY_COST: int = 12
 
 
 @onready var enemy_spawn_locations: Node = $"../EnemySpawnLocations"
@@ -25,7 +25,7 @@ func next_loop():
 	spawn_ghost_players()
 
 func spawn_enemies():
-	enemy_points = LoopCount.loops * 10
+	enemy_points = LoopCount.loops * 15
 	var available_enemies = [BASIC_ENEMY, SHAMAN_ENEMY, SUICIDE_ENEMY]
 	while enemy_points != 0:
 		var chosen_enemy = available_enemies.pick_random()
@@ -66,7 +66,7 @@ func get_cost(enemy):
 		BASIC_ENEMY:
 			return BASIC_ENEMY_COST
 		SHAMAN_ENEMY:
-			return SHAMAN_ENEMY_COST
+			return SHAMAN_ENEMY_COST + LoopCount.loops
 		SUICIDE_ENEMY:
 			return SUICIDE_ENEMY_COST
 		

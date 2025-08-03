@@ -19,3 +19,7 @@ func destroy_projectile():
 	animated_sprite_2d.play("collision")
 	await animated_sprite_2d.animation_finished
 	queue_free()
+
+
+func _on_timer_timeout() -> void:
+	queue_free()

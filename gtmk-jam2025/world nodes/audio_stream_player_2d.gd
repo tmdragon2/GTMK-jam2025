@@ -1,5 +1,5 @@
 extends AudioStreamPlayer
-const high_wave_music: AudioStream = preload("res://Assets/aztecthingy4.wav")
+const high_wave_music = preload("res://Assets/aztecthingamajig2.wav")
 func _ready() -> void:
 	SignalBus.connect("next_loop", next_loop)
 	

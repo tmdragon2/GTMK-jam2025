@@ -2,7 +2,7 @@ extends Control
 @onready var deathscreen: Panel = $Deathdisplay
 
 func _ready() -> void:
-	$Label.text = ("You made it through " +str(LoopCount.loops)+" loop(s)")
+	$Label.text = ("You made it through " +str(LoopCount.loops)+" loop(s) in " + str(snapped(TimeKeeper.time, 0.01)) + "sec")
 	
 
 
