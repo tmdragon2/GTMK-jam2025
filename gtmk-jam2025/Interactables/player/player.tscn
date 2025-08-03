@@ -241,7 +241,7 @@ texture = ExtResource("11_wyhmo")
 
 [node name="ShootSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_eyay0")
-volume_db = -10.0
+volume_db = -15.0
 
 [connection signal="animation_finished" from="gun/MuzzleflashAnimation" to="gun" method="_on_muzzleflash_animation_animation_finished"]
 [connection signal="timeout" from="gun/ReloadTimer" to="gun" method="_on_reload_timer_timeout"]

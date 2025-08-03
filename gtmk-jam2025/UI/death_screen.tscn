@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4qqhcm7qunko"]
+[gd_scene load_steps=10 format=3 uid="uid://b4qqhcm7qunko"]
 
 [ext_resource type="Script" uid="uid://c5om6kcso0evg" path="res://UI/death_screen.gd" id="1_if853"]
 [ext_resource type="Texture2D" uid="uid://towm36tnnwf2" path="res://Assets/Death_screen.png" id="2_n1nej"]
 [ext_resource type="FontFile" uid="uid://cjcxmhou4s7cg" path="res://alagard/alagard.ttf" id="3_tawod"]
+[ext_resource type="AudioStream" uid="uid://c663aqglhy5sa" path="res://Assets/deathscreen.wav" id="4_mh08j"]
 
 [sub_resource type="Theme" id="Theme_mh08j"]
 default_font = ExtResource("3_tawod")
@@ -92,6 +93,11 @@ grow_vertical = 2
 theme = SubResource("Theme_tawod")
 text = "Loop display here"
 horizontal_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_mh08j")
+volume_db = 10.306
+autoplay = true
 
 [connection signal="pressed" from="Deathdisplay/VBoxContainer/Retry" to="." method="_on_retry_pressed"]
 [connection signal="pressed" from="Deathdisplay/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

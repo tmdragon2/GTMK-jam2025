@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://mbfa81sekpgj"
-path="res://.godot/imported/aztecthingy4.wav-47db752245bdd174c709c9854716791e.sample"
+uid="uid://c663aqglhy5sa"
+path="res://.godot/imported/deathscreen.wav-75be4808516e4bc23037cb7776c5e32d.sample"
 
 [deps]
 
-source_file="res://Assets/aztecthingy4.wav"
-dest_files=["res://.godot/imported/aztecthingy4.wav-47db752245bdd174c709c9854716791e.sample"]
+source_file="res://Assets/deathscreen.wav"
+dest_files=["res://.godot/imported/deathscreen.wav-75be4808516e4bc23037cb7776c5e32d.sample"]
 
 [params]
 

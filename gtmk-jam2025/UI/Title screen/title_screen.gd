@@ -1,7 +1,10 @@
 extends Control
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+
 @onready var options: Panel = $Options
 @onready var mainbuttons: VBoxContainer = $ColorRect/Mainbuttons
 @onready var Credits: Panel = $Options/Creditlist
+var audio_position
 func _ready() -> void:
 	options.visible = false
 	Credits.visible = false
