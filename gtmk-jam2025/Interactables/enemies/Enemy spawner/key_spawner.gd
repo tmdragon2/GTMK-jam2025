@@ -1,8 +1,8 @@
 extends Node2D
 @onready var key_location = preload("res://Interactables/Objects/Key.tscn")
 
-@export var pointA: Vector2 = Vector2(50,50)
-@export var pointB: Vector2 = Vector2(1100, 600)
+@export var pointA: Vector2 = Vector2(-50,-50)
+@export var pointB: Vector2 = Vector2(1950, 1300)
 
 
 func get_boxpoint(p1: Vector2, p2: Vector2) -> Vector2:
@@ -19,10 +19,7 @@ func spawn_key():
 	key_instance.set_position(spawn_location)
 	
 	
-func _ready() -> void:
-		spawn_key()
-		randomize()
-
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("shoot"):
-		spawn_key()
+			spawn_key()
+			randomize()

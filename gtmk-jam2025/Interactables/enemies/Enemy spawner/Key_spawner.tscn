@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://dl5wtektmweut"]
+[gd_scene load_steps=3 format=3 uid="uid://dl5wtektmweut"]
 
 [ext_resource type="Script" uid="uid://d21r0hd8ltvey" path="res://Interactables/enemies/Enemy spawner/key_spawner.gd" id="1_msefx"]
+[ext_resource type="Script" uid="uid://bj7m7svph5y6m" path="res://Interactables/enemies/Enemy spawner/control.gd" id="2_c6850"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_msefx")
+pointA = Vector2(-1000, 50)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_c6850")

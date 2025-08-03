@@ -98,16 +98,7 @@ max_value = 0.0
 script = ExtResource("3_so6ex")
 audiobus_name = "Music"
 
-[node name="Button3" type="Button" parent="Options"]
-layout_mode = 2
-offset_left = 435.0
-offset_top = 215.0
-offset_right = 717.0
-offset_bottom = 304.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Button2" type="Button" parent="Options"]
+[node name="Credits" type="Button" parent="Options"]
 layout_mode = 2
 offset_left = 435.0
 offset_top = 343.0
@@ -139,8 +130,34 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 100
 text = "Options"
 
+[node name="Creditlist" type="Panel" parent="Options"]
+layout_mode = 2
+offset_left = 989.0
+offset_top = 386.0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Label" type="Label" parent="Options/Creditlist"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Trumasterdragon2
+(Coder)
+Asvo77
+(Artist)
+SamTheSpacedOut
+(Artist)
+Seba
+(Music)
+WasserSaft
+(Coder)"
+
 [connection signal="pressed" from="ColorRect/Mainbuttons/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="ColorRect/Mainbuttons/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="ColorRect/Mainbuttons/Quit" to="." method="_on_quit_pressed"]
 [connection signal="value_changed" from="Options/BoxContainer/Label2/Audioslider" to="Options/BoxContainer/Label2/Audioslider" method="_on_value_changed"]
+[connection signal="pressed" from="Options/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="Options/Settings_leave" to="." method="_on_settings_leave_pressed"]

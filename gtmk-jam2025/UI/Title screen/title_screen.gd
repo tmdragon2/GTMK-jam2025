@@ -1,9 +1,10 @@
 extends Control
 @onready var options: Panel = $Options
 @onready var mainbuttons: VBoxContainer = $ColorRect/Mainbuttons
-
+@onready var Credits: Panel = $Options/Creditlist
 func _ready() -> void:
 	options.visible = false
+	Credits.visible = false
 func _on_play_pressed() -> void:
 	get_tree().change_scene_to_file("res://world nodes/main_level.tscn")
 
@@ -21,3 +22,8 @@ func _on_options_pressed() -> void:
 
 func _on_settings_leave_pressed() -> void:
 	get_tree().change_scene_to_file("res://UI/Title screen/Title_screen.tscn")
+
+
+func _on_credits_pressed() -> void:
+	Credits.visible = true
+	

@@ -6,7 +6,7 @@ func _ready() -> void:
 
 
 func _on_retry_pressed() -> void:
-	get_tree().change_scene_to_file("res://world nodes/level area.tscn")
+	get_tree().change_scene_to_file("res://UI/Title screen/Title_screen.tscn")
 
 
 func _on_quit_pressed() -> void:

@@ -225,7 +225,6 @@ position = Vector2(12, -1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 ignore_rotation = false
-zoom = Vector2(1.25, 1.25)
 
 [node name="ActionRecorder" type="Node" parent="."]
 script = ExtResource("10_x5dtk")
