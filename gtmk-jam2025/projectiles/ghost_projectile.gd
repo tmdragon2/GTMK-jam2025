@@ -8,11 +8,15 @@ func _ready():
 	
 func _process(delta: float) -> void:
 	move_and_slide()
+	
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		if body.has_method("die"):
 			body.die()
 		destroy_projectile()
+	else:
+		if body != get_parent():
+			destroy_projectile()
 		
 func destroy_projectile():
 	velocity = Vector2.ZERO

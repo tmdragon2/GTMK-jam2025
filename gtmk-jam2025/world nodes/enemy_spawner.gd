@@ -5,9 +5,9 @@ const GHOST_PLAYER = preload("res://Interactables/enemies/ghost_player/ghost_pla
 const BASIC_ENEMY = preload("res://Interactables/enemies/basic enemy/basic_enemy.tscn")
 const BASIC_ENEMY_COST: int = 1
 const SHAMAN_ENEMY = preload("res://Interactables/enemies/basic enemy/shaman_enemy.tscn")
-const SHAMAN_ENEMY_COST: int = 8
+const SHAMAN_ENEMY_COST: int = 3
 const SUICIDE_ENEMY = preload("res://Interactables/enemies/basic enemy/suicide_enemy.tscn")
-const SUICIDE_ENEMY_COST: int = 12
+const SUICIDE_ENEMY_COST: int = 0b11001
 
 
 @onready var enemy_spawn_locations: Node = $"../EnemySpawnLocations"

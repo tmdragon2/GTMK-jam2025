@@ -29,7 +29,10 @@ region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3voha"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 0.01,
+"texture": ExtResource("2_rqwtf")
+}],
 "loop": false,
 "name": &"collision",
 "speed": 8.0
@@ -66,6 +69,7 @@ script = ExtResource("1_rqwtf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3voha")
+animation = &"collision"
 autoplay = "default"
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -80,4 +84,5 @@ wait_time = 10.0
 one_shot = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

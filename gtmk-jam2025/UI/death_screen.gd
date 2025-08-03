@@ -7,6 +7,7 @@ func _ready() -> void:
 
 
 func _on_retry_pressed() -> void:
+	LoopCount.loops = 0
 	get_tree().change_scene_to_file("res://UI/Title screen/Title_screen.tscn")
 
 

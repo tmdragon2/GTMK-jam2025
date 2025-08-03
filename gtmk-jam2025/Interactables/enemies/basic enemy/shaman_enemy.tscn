@@ -144,7 +144,7 @@ radius = 13.0
 
 [node name="ShamanEnemy" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent", "animated_sprite", "death_sound_player") groups=["enemies"]]
 script = ExtResource("1_ma38o")
-speed = 75
+speed = 125
 nav_agent = NodePath("NavigationAgent2D")
 animated_sprite = NodePath("AnimatedSprite2D")
 death_sound_player = NodePath("death sound")
@@ -170,7 +170,7 @@ position = Vector2(0, 8)
 shape = SubResource("CircleShape2D_if2qo")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 1.5
 autostart = true
 
 [node name="BulletStartPos" type="Marker2D" parent="."]

@@ -261,5 +261,10 @@ offset_right = 576.0
 offset_bottom = 63.0
 script = ExtResource("14_4y5gc")
 
+[node name="invincibility" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="animation_finished" from="gun/MuzzleflashAnimation" to="gun" method="_on_muzzleflash_animation_animation_finished"]
 [connection signal="timeout" from="gun/ReloadTimer" to="gun" method="_on_reload_timer_timeout"]
+[connection signal="timeout" from="invincibility" to="." method="_on_invincibility_timeout"]

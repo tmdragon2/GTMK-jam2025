@@ -9,7 +9,7 @@ var projectile_node: Node
 var points_right: bool = true
 var can_shoot = true
 var action_recorder: Node
-const reload_time = 0.25#time in seconds
+const reload_time = 1 #time in seconds
 
 func init(player, projectiles, action_recorder_node):
 	projectile_node = projectiles

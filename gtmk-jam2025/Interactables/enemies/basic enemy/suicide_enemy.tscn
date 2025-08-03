@@ -132,7 +132,7 @@ radius = 24.0
 
 [node name="SuicideEnemy" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent", "animated_sprite", "death_sound_player") groups=["enemies"]]
 script = ExtResource("1_llhdq")
-speed = 250
+speed = 350
 nav_agent = NodePath("NavigationAgent2D")
 animated_sprite = NodePath("AnimatedSprite2D")
 death_sound_player = NodePath("death_sound")

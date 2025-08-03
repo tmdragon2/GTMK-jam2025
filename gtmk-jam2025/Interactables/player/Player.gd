@@ -10,7 +10,9 @@ extends CharacterBody2D
 @export var acceleration = 0.1
 @onready var player_spawn_locations: Node = $"../PlayerSpawnLocations"
 @onready var item_pointer: Node2D = $item_pointer
+@onready var invincibility: Timer = $invincibility
 
+var invincible: bool = true
 var keytaken: bool = false
 var dead: bool = false
 
@@ -60,8 +62,9 @@ func pause_check():
 		get_tree().change_scene_to_file("res://UI/Title screen/Title_screen.tscn")
 func key_check():
 	pass
+	
 func die():
-	if dead == false:
+	if dead == false and invincible == false:
 		dead = true
 		anim_component.play_animation("die")
 		await animated_sprite_2d.animation_finished
@@ -83,7 +86,13 @@ func next_loop():
 	keytaken = false
 	global_position = player_spawn_locations.get_children().pick_random().global_position
 	item_pointer.visible = false
+	invincibility.start(3)
+	invincible = true
 
 func get_animation():
 	var animation = animated_sprite_2d.animation
 	return animation
+
+
+func _on_invincibility_timeout() -> void:
+	invincible = false
