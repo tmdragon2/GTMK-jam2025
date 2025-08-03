@@ -16,7 +16,7 @@ func _on_player_detection_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		if keytaken == false:
 			body.keytaken = true
-			queue_free()
+			SignalBus.open_door.emit()
 
 func _on_collide_detection_body_entered(body: Node2D) -> void:
 	queue_free()

@@ -84,8 +84,6 @@ simplify_path = true
 debug_enabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-modulate = Color(1, 0, 0, 1)
-scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_c5wvf")
 autoplay = "default"
 frame_progress = 0.812313
