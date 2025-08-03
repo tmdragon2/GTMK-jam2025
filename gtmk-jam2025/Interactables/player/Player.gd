@@ -8,11 +8,14 @@ extends CharacterBody2D
 @export var speed = 200
 @export var friction = 0.15
 @export var acceleration = 0.1
+@onready var player_spawn_locations: Node = $"../PlayerSpawnLocations"
+@onready var item_pointer: Node2D = $item_pointer
 
 var keytaken: bool = false
 var dead: bool = false
 
 func _ready() -> void:
+	SignalBus.connect("next_loop", next_loop)
 	anim_component.init(self, animated_sprite_2d)
 	gun.init(self, projectile_node, action_recorder)
 
@@ -24,6 +27,11 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("shoot"):
 			gun.shoot()
 		move_and_slide()
+	if keytaken and item_pointer != null:
+		item_pointer.look_at(KeyDoorPositions.door_location)
+	else:
+		item_pointer.look_at(KeyDoorPositions.key_location)
+
 	
 	
 func movement():
@@ -53,15 +61,29 @@ func pause_check():
 func key_check():
 	pass
 func die():
-	dead = true
-	anim_component.play_animation("die")
-	await animated_sprite_2d.animation_finished
-	get_tree().change_scene_to_file("res://UI/death_screen.tscn")
-	queue_free()
-
+	if dead == false:
+		dead = true
+		anim_component.play_animation("die")
+		await animated_sprite_2d.animation_finished
+		get_tree().change_scene_to_file("res://UI/death_screen.tscn")
+	
 func get_position_array():
 	var position_array = action_recorder.position_array
+	
 	return position_array
 func get_shoot_array():
 	var shooting_array = action_recorder.shooting_array
 	return shooting_array
+
+func get_animation_array():
+	var animation_array = action_recorder.animation_array
+	return animation_array
+
+func next_loop():
+	keytaken = false
+	global_position = player_spawn_locations.get_children().pick_random().global_position
+	item_pointer.visible = false
+
+func get_animation():
+	var animation = animated_sprite_2d.animation
+	return animation

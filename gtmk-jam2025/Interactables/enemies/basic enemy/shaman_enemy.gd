@@ -27,7 +27,7 @@ func shoot():
 	animated_sprite.play("shoot")
 	shooting = true
 	var projectile = GHOST_PROJECTILE.instantiate()
-	projectile.look_at(player.position)
+	projectile.look_at(player.global_position - global_position)
 	projectile.global_position = bullet_start_pos.global_position
 	get_parent().add_child(projectile)
 	await animated_sprite.animation_finished

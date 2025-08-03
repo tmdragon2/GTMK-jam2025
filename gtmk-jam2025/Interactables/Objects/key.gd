@@ -19,12 +19,12 @@ func _on_player_detection_body_entered(body: Node2D) -> void:
 		if keytaken == false:
 			body.keytaken = true
 			SignalBus.open_door.emit()
-func walldetection():
-	if raycast1.is_colliding():
-		move_toward(1,1,1)
-	if raycast2.is_colliding():
-		move_toward(1,1,1)
-	if raycast3.is_colliding():
-		move_toward(1,1,1)
-	if raycast4.is_colliding():
-		move_toward(1,1,1)
+			visible = false
+
+
+func _on_tree_entered() -> void:
+	SignalBus.connect("next_loop", next_loop)
+	KeyDoorPositions.key_location = position
+
+func next_loop():
+	visible = true

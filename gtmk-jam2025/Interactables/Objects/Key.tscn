@@ -6,6 +6,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gp5im"]
 
 [node name="Key" type="Node2D"]
+z_index = 2
+scale = Vector2(2, 2)
 script = ExtResource("1_gp5im")
 
 [node name="player_detection" type="Area2D" parent="."]
@@ -31,4 +33,5 @@ collision_mask = 4
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_gynm6")
 
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="body_entered" from="player_detection" to="." method="_on_player_detection_body_entered"]

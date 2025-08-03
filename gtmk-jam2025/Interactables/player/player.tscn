@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://duyind1gtr8lg"]
+[gd_scene load_steps=35 format=3 uid="uid://duyind1gtr8lg"]
 
 [ext_resource type="Script" uid="uid://cwwjoaufqmmca" path="res://Interactables/player/Player.gd" id="1_xxgcw"]
 [ext_resource type="Texture2D" uid="uid://dc2gela3hahdl" path="res://Assets/icon.svg" id="2_exd8k"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://r3l0rplaak76" path="res://Interactables/player/shotgun.png" id="7_rpf03"]
 [ext_resource type="Texture2D" uid="uid://v87jyxtdgf0e" path="res://Interactables/player/shotgun_muzzleflash.png" id="8_x5dtk"]
 [ext_resource type="Script" uid="uid://dkojsodkjtlmm" path="res://Interactables/player/action_recorder.gd" id="10_x5dtk"]
+[ext_resource type="Texture2D" uid="uid://ca83utm0xv87p" path="res://arrow.png" id="11_wyhmo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lv4bx"]
 atlas = ExtResource("3_rpf03")
@@ -193,6 +194,7 @@ collision_layer = 17
 collision_mask = 2
 script = ExtResource("1_xxgcw")
 player = NodePath(".")
+speed = 350
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5dc8e")
@@ -228,6 +230,13 @@ ignore_rotation = false
 
 [node name="ActionRecorder" type="Node" parent="."]
 script = ExtResource("10_x5dtk")
+
+[node name="item_pointer" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="item_pointer"]
+position = Vector2(24, 0)
+rotation = 1.5708
+texture = ExtResource("11_wyhmo")
 
 [connection signal="animation_finished" from="gun/MuzzleflashAnimation" to="gun" method="_on_muzzleflash_animation_animation_finished"]
 [connection signal="timeout" from="gun/ReloadTimer" to="gun" method="_on_reload_timer_timeout"]

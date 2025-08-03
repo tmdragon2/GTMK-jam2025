@@ -5,7 +5,9 @@ var bullets_shot = 0
 var frame_counter = 0
 var position_array: Array
 var shooting_array: Array 
+var animation_array: Array
 var projectile_node: Node
+
 const PROJECTILE = preload("res://projectiles/Projectile.tscn")
 #[the frame the first bullet was shot at, the position it started, the roatation of the bullet]
 #[the frame the second bullet was shot at, the position it started, the roatation of the bullet]
@@ -17,6 +19,7 @@ func init(player_node, projectiles, action_recorder_node):
 
 func _physics_process(delta: float) -> void:
 	position_array.append(player.position)
+	animation_array.append(player.get_animation())
 	frame_counter += 1
 
 	
