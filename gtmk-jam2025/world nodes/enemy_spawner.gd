@@ -4,6 +4,9 @@ const GHOST_PLAYER = preload("res://Interactables/enemies/ghost_player/ghost_pla
 const BASIC_ENEMY = preload("res://Interactables/enemies/basic enemy/basic_enemy.tscn")
 const BASIC_ENEMY_COST: int = 1
 @onready var enemy_spawn_locations: Node = $"../EnemySpawnLocations"
+@onready var navregion: NavigationRegion2D = $"../NavigationRegion2D"
+
+
 
 var enemy_points = 0
 func next_loop():
@@ -13,7 +16,6 @@ func next_loop():
 func spawn_enemies():
 	enemy_points = LoopCount.loops * 5
 	var available_enemies = [BASIC_ENEMY]
-	
 	while enemy_points != 0:
 		var chosen_enemy = available_enemies.pick_random()
 		var enemy_cost = get_cost(chosen_enemy)
@@ -31,6 +33,7 @@ func spawn_enemies():
 				enemy.player = player
 				get_parent().add_child(enemy)
 			
+
 
 		
 	

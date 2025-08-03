@@ -1,0 +1,136 @@
+[gd_scene load_steps=19 format=3 uid="uid://robc22xk2gh7"]
+
+[ext_resource type="Script" uid="uid://545dfmgnvvhi" path="res://characters/enemies/basic enemy/basic_enemy.gd" id="1_eqef7"]
+[ext_resource type="Texture2D" uid="uid://b75w7spxea01k" path="res://characters/enemies/basic enemy/enemy_base_death.png" id="2_c5wvf"]
+[ext_resource type="Texture2D" uid="uid://bwb2tr87it1kr" path="res://characters/enemies/basic enemy/enemy_base_walk.png" id="2_if2qo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kjnh"]
+atlas = ExtResource("2_c5wvf")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6v5f"]
+atlas = ExtResource("2_c5wvf")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdcjp"]
+atlas = ExtResource("2_c5wvf")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a52lx"]
+atlas = ExtResource("2_c5wvf")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5wvf"]
+atlas = ExtResource("2_if2qo")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7tgkl"]
+atlas = ExtResource("2_if2qo")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ae682"]
+atlas = ExtResource("2_if2qo")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jikh4"]
+atlas = ExtResource("2_if2qo")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ueuqi"]
+atlas = ExtResource("2_if2qo")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjcw8"]
+atlas = ExtResource("2_if2qo")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7ssw"]
+atlas = ExtResource("2_if2qo")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fql6d"]
+atlas = ExtResource("2_if2qo")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c5wvf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5kjnh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6v5f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tdcjp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a52lx")
+}],
+"loop": false,
+"name": &"die",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5wvf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7tgkl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ae682")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jikh4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ueuqi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hjcw8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7ssw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fql6d")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 9.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c5wvf"]
+radius = 9.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_if2qo"]
+radius = 10.0499
+
+[node name="BasicEnemy" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent", "animated_sprite") groups=["enemies"]]
+script = ExtResource("1_eqef7")
+speed = 150
+nav_agent = NodePath("NavigationAgent2D")
+animated_sprite = NodePath("AnimatedSprite2D")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 5.0
+simplify_path = true
+debug_enabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_c5wvf")
+animation = &"walk"
+autoplay = "walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_c5wvf")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_if2qo")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
