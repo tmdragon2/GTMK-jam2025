@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bbxd70h2fg433"]
+[gd_scene load_steps=8 format=3 uid="uid://bbxd70h2fg433"]
 
 [ext_resource type="Script" uid="uid://b5c2x0y1nexin" path="res://UI/Title screen/title_screen.gd" id="1_cr2l3"]
 [ext_resource type="AudioStream" uid="uid://duc6xptvq1hex" path="res://menu.wav" id="2_so6ex"]
+[ext_resource type="Texture2D" uid="uid://b6hroqkaysudm" path="res://UI/Main_Menu_scaled_5x.png" id="3_eb7xo"]
 [ext_resource type="Script" uid="uid://bw4apdkdyhl3h" path="res://UI/Title screen/audioslider.gd" id="3_so6ex"]
+[ext_resource type="Texture2D" uid="uid://d0uae8cq4u4ib" path="res://Assets/title_card.png" id="5_s8vfo"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_cr2l3"]
 color = Color(0.185497, 0.416209, 1, 1)
@@ -33,6 +35,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="ColorRect"]
+position = Vector2(576, 323.125)
+scale = Vector2(0.533333, 0.534774)
+texture = ExtResource("3_eb7xo")
 
 [node name="Mainbuttons" type="VBoxContainer" parent="ColorRect"]
 layout_mode = 1
@@ -154,6 +161,11 @@ Seba
 (Music)
 WasserSaft
 (Coder)"
+
+[node name="TitleCard" type="Sprite2D" parent="."]
+position = Vector2(581, 137)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_s8vfo")
 
 [connection signal="pressed" from="ColorRect/Mainbuttons/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="ColorRect/Mainbuttons/Options" to="." method="_on_options_pressed"]
