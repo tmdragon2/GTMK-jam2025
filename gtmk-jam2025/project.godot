@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GTMK-jam2025"
-run/main_scene="uid://idsu2orqbjpb"
+run/main_scene="uid://bbxd70h2fg433"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://Assets/icon.svg"
 
@@ -85,3 +85,5 @@ escape={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
