@@ -21,6 +21,10 @@ LoopCount="*res://autoloads/loop_count.gd"
 SignalBus="*res://autoloads/signal_bus.gd"
 KeyDoorPositions="*res://autoloads/key_door_positions.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [file_customization]
 
 folder_colors={
