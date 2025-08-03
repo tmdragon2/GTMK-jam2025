@@ -7,7 +7,6 @@ var position_array: Array
 var shooting_array: Array 
 var animation_array: Array
 var projectile_node: Node
-
 const PROJECTILE = preload("res://projectiles/Projectile.tscn")
 #[the frame the first bullet was shot at, the position it started, the roatation of the bullet]
 #[the frame the second bullet was shot at, the position it started, the roatation of the bullet]
@@ -26,9 +25,11 @@ func _physics_process(delta: float) -> void:
 func update_shoot_array(bullet_start_pos, bullet_rotation):
 	shooting_array.append([frame_counter, bullet_start_pos, bullet_rotation])
 	
+func _ready() -> void:
+	SignalBus.connect("next_loop", next_loop)
 	
-	
-	
+func next_loop():
+	pass
 		#var projectile = PROJECTILE.instantiate()
 		#projectile.rotation = rotation
 		#projectile.global_position = barrel.global_position

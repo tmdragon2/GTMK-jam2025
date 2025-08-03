@@ -55,6 +55,9 @@ func spawn_ghost_players():
 	ghost_player.projectile_node = player.projectile_node
 	ghost_player.shooting_array = player.get_shoot_array().duplicate(true)
 	ghost_player.position_array = player.get_position_array().duplicate(true)
+	player.action_recorder.position_array.clear()
+	player.action_recorder.shooting_array.clear()
+	player.action_recorder.animation_array.clear()
 	get_parent().add_child(ghost_player)
 	
 		
