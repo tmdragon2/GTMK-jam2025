@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://robc22xk2gh7"]
+[gd_scene load_steps=20 format=3 uid="uid://robc22xk2gh7"]
 
 [ext_resource type="Script" uid="uid://545dfmgnvvhi" path="res://Interactables/enemies/basic enemy/basic_enemy.gd" id="1_eqef7"]
 [ext_resource type="Texture2D" uid="uid://bwb2tr87it1kr" path="res://Interactables/enemies/basic enemy/enemy_base_walk.png" id="2_b13gy"]
 [ext_resource type="Texture2D" uid="uid://b75w7spxea01k" path="res://Interactables/enemies/basic enemy/enemy_base_death.png" id="3_hrr78"]
+[ext_resource type="AudioStream" uid="uid://bacd6ihhixklj" path="res://Assets/enemydeath.wav" id="4_gb6qh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hrr78"]
 atlas = ExtResource("2_b13gy")
@@ -107,15 +108,15 @@ radius = 12.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_if2qo"]
 radius = 13.0
 
-[node name="BasicEnemy" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent", "animated_sprite") groups=["enemies"]]
+[node name="BasicEnemy" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent", "animated_sprite", "death_sound_player") groups=["enemies"]]
 script = ExtResource("1_eqef7")
 speed = 150
 nav_agent = NodePath("NavigationAgent2D")
 animated_sprite = NodePath("AnimatedSprite2D")
+death_sound_player = NodePath("deathsound")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 simplify_path = true
-debug_enabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_c5wvf")
@@ -133,5 +134,8 @@ collision_mask = 9
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(-8, 0)
 shape = SubResource("CircleShape2D_if2qo")
+
+[node name="deathsound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_gb6qh")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

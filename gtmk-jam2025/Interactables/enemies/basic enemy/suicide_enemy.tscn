@@ -1,8 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://d0npv1bcx7xfx"]
+[gd_scene load_steps=24 format=3 uid="uid://d0npv1bcx7xfx"]
 
 [ext_resource type="Script" uid="uid://cwqbrllqonbbe" path="res://Interactables/enemies/basic enemy/suicide_enemy.gd" id="1_llhdq"]
 [ext_resource type="Texture2D" uid="uid://dboxahw3j3kj5" path="res://Interactables/enemies/basic enemy/enemy_suicide_walk.png" id="2_to66j"]
 [ext_resource type="Texture2D" uid="uid://d00yu67bupiij" path="res://Interactables/enemies/basic enemy/enemy_suicide_death.png" id="3_wa7xe"]
+[ext_resource type="AudioStream" uid="uid://ovjv254wuvc6" path="res://Assets/explosion.wav" id="4_to66j"]
+[ext_resource type="AudioStream" uid="uid://bacd6ihhixklj" path="res://Assets/enemydeath.wav" id="5_wa7xe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uq8e6"]
 atlas = ExtResource("3_wa7xe")
@@ -128,11 +130,12 @@ radius = 16.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_if2qo"]
 radius = 24.0
 
-[node name="SuicideEnemy" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent", "animated_sprite") groups=["enemies"]]
+[node name="SuicideEnemy" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent", "animated_sprite", "death_sound_player") groups=["enemies"]]
 script = ExtResource("1_llhdq")
-speed = 300
+speed = 250
 nav_agent = NodePath("NavigationAgent2D")
 animated_sprite = NodePath("AnimatedSprite2D")
+death_sound_player = NodePath("death_sound")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 simplify_path = true
@@ -153,5 +156,11 @@ collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_if2qo")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_to66j")
+
+[node name="death_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_wa7xe")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

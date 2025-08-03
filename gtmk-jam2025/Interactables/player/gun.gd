@@ -2,6 +2,7 @@ extends Node2D
 @onready var barrel: Marker2D = $Barrel
 @onready var reload_timer: Timer = $ReloadTimer
 @onready var muzzleflash_animation: AnimatedSprite2D = $MuzzleflashAnimation
+@onready var shoot_sound: AudioStreamPlayer = $"../ShootSound"
 
 const PROJECTILE = preload("res://projectiles/Projectile.tscn")
 var projectile_node: Node
@@ -21,6 +22,7 @@ func _physics_process(delta: float) -> void:
 	
 func shoot():
 	if can_shoot == true:
+		shoot_sound.play()
 		can_shoot = false
 		muzzleflash_animation.visible = true
 		muzzleflash_animation.play()

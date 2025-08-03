@@ -5,7 +5,7 @@ class_name Enemy
 @export var nav_agent: NavigationAgent2D
 @export var contact_damage: bool = true
 @export var animated_sprite: AnimatedSprite2D
-
+@export var death_sound_player: AudioStreamPlayer
 var dead: bool = false
 var looks_right: bool = true
 
@@ -43,8 +43,11 @@ func die():
 	if animated_sprite.sprite_frames.has_animation("die"):
 		animated_sprite.play("die")
 		animated_sprite.self_modulate.a = .5
-		await animated_sprite.animation_finished
-		queue_free()
+	if death_sound_player:
+		death_sound_player.play()
+	await animated_sprite.animation_finished
+	queue_free()
+
 		
 		
 		

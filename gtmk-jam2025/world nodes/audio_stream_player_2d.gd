@@ -4,6 +4,6 @@ func _ready() -> void:
 	SignalBus.connect("next_loop", next_loop)
 	
 func next_loop():
-	if LoopCount.loops >= 5:
+	if LoopCount.loops >= 8:
 		stream = high_wave_music
 		playing = true
