@@ -8,10 +8,12 @@ class_name Enemy
 
 var dead: bool = false
 var looks_right: bool = true
+
 func move_to_target(target: Vector2):
-	nav_agent.target_position = target
-	var dir = to_local(nav_agent.get_next_path_position()).normalized()
-	velocity = dir * speed
+	if not dead:
+		nav_agent.target_position = target
+		var dir = to_local(nav_agent.get_next_path_position()).normalized()
+		velocity = dir * speed
 
 func body_entered_hitbox(body: Node2D) -> void:
 	if contact_damage == true:
@@ -41,6 +43,9 @@ func die():
 	if animated_sprite.sprite_frames.has_animation("die"):
 		animated_sprite.play("die")
 		animated_sprite.self_modulate.a = .5
+		await animated_sprite.animation_finished
+		queue_free()
+		
 		
 		
 		

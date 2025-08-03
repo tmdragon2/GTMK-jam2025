@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://robc22xk2gh7"]
+[gd_scene load_steps=19 format=3 uid="uid://robc22xk2gh7"]
 
 [ext_resource type="Script" uid="uid://545dfmgnvvhi" path="res://Interactables/enemies/basic enemy/basic_enemy.gd" id="1_eqef7"]
 [ext_resource type="Texture2D" uid="uid://bwb2tr87it1kr" path="res://Interactables/enemies/basic enemy/enemy_base_walk.png" id="2_b13gy"]
+[ext_resource type="Texture2D" uid="uid://b75w7spxea01k" path="res://Interactables/enemies/basic enemy/enemy_base_death.png" id="3_hrr78"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hrr78"]
 atlas = ExtResource("2_b13gy")
@@ -35,6 +36,22 @@ region = Rect2(288, 0, 48, 48)
 atlas = ExtResource("2_b13gy")
 region = Rect2(336, 0, 48, 48)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_nb3qi"]
+atlas = ExtResource("3_hrr78")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmmng"]
+atlas = ExtResource("3_hrr78")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13qcr"]
+atlas = ExtResource("3_hrr78")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2nvie"]
+atlas = ExtResource("3_hrr78")
+region = Rect2(144, 0, 48, 48)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_c5wvf"]
 animations = [{
 "frames": [{
@@ -65,17 +82,34 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nb3qi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmmng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_13qcr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2nvie")
+}],
+"loop": false,
+"name": &"die",
+"speed": 7.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7tgkl"]
-radius = 30.0167
+radius = 12.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_if2qo"]
-radius = 31.0161
+radius = 13.0
 
 [node name="BasicEnemy" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent", "animated_sprite") groups=["enemies"]]
 script = ExtResource("1_eqef7")
-speed = 100
+speed = 150
 nav_agent = NodePath("NavigationAgent2D")
 animated_sprite = NodePath("AnimatedSprite2D")
 
@@ -85,10 +119,11 @@ debug_enabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_c5wvf")
+animation = &"die"
 autoplay = "default"
-frame_progress = 0.812313
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-8, 0)
 shape = SubResource("CircleShape2D_7tgkl")
 
 [node name="Hitbox" type="Area2D" parent="."]
@@ -96,6 +131,7 @@ collision_layer = 2
 collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-8, 0)
 shape = SubResource("CircleShape2D_if2qo")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

@@ -54,7 +54,6 @@ func key_check():
 	pass
 func die():
 	dead = true
-	gun.queue_free()
 	anim_component.play_animation("die")
 	await animated_sprite_2d.animation_finished
 	get_tree().change_scene_to_file("res://UI/death_screen.tscn")
