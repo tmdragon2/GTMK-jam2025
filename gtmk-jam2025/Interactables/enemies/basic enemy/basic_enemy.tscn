@@ -1,13 +1,66 @@
-[gd_scene load_steps=6 format=3 uid="uid://robc22xk2gh7"]
+[gd_scene load_steps=14 format=3 uid="uid://robc22xk2gh7"]
 
 [ext_resource type="Script" uid="uid://545dfmgnvvhi" path="res://Interactables/enemies/basic enemy/basic_enemy.gd" id="1_eqef7"]
-[ext_resource type="Texture2D" uid="uid://dc2gela3hahdl" path="res://Assets/icon.svg" id="2_if2qo"]
+[ext_resource type="Texture2D" uid="uid://bwb2tr87it1kr" path="res://Interactables/enemies/basic enemy/enemy_base_walk.png" id="2_b13gy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrr78"]
+atlas = ExtResource("2_b13gy")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gb6qh"]
+atlas = ExtResource("2_b13gy")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4r81l"]
+atlas = ExtResource("2_b13gy")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rri3l"]
+atlas = ExtResource("2_b13gy")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6oes8"]
+atlas = ExtResource("2_b13gy")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ism4"]
+atlas = ExtResource("2_b13gy")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrlmg"]
+atlas = ExtResource("2_b13gy")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swld8"]
+atlas = ExtResource("2_b13gy")
+region = Rect2(336, 0, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c5wvf"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_if2qo")
+"texture": SubResource("AtlasTexture_hrr78")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gb6qh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4r81l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rri3l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6oes8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ism4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrlmg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swld8")
 }],
 "loop": true,
 "name": &"default",
@@ -31,9 +84,9 @@ simplify_path = true
 debug_enabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-modulate = Color(1, 0, 0, 1)
-scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_c5wvf")
+autoplay = "default"
+frame_progress = 0.812313
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_7tgkl")
