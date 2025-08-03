@@ -20,4 +20,4 @@ func _on_options_pressed() -> void:
 
 
 func _on_settings_leave_pressed() -> void:
-	get_tree().change_scene_to_file("res://Title screen/Title_screen.tscn")
+	get_tree().change_scene_to_file("res://UI/Title screen/Title_screen.tscn")
