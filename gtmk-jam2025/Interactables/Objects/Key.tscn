@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://clottgdvxykia"]
+[gd_scene load_steps=5 format=3 uid="uid://clottgdvxykia"]
 
 [ext_resource type="Script" uid="uid://0sau8gco8r2j" path="res://Interactables/Objects/key.gd" id="1_gp5im"]
+[ext_resource type="Texture2D" uid="uid://bi1clvrhjuufe" path="res://Assets/key.png" id="2_gynm6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gp5im"]
 
@@ -19,6 +20,9 @@ shape = SubResource("RectangleShape2D_gp5im")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collide_detection"]
 scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_3nogi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_gynm6")
 
 [connection signal="body_entered" from="player_detection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_entered" from="collide_detection" to="." method="_on_collide_detection_body_entered"]
