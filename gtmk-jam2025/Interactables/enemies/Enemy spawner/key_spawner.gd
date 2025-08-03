@@ -1,5 +1,5 @@
 extends Node2D
-@onready var key_location = preload("res://Interactables/enemies/Enemy spawner/Key_spawner.tscn")
+@onready var key_location = preload("res://Interactables/Objects/Key.tscn")
 
 @export var pointA: Vector2 = Vector2(50,50)
 @export var pointB: Vector2 = Vector2(1100, 600)
@@ -22,3 +22,7 @@ func spawn_key():
 func _ready() -> void:
 		spawn_key()
 		randomize()
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("shoot"):
+		spawn_key()

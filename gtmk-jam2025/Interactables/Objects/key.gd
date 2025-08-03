@@ -3,11 +3,6 @@ var keytaken = false
 var doorcheck = false 
 signal dooropened
 
-func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
-	if body.is_in_group("player"):
-		if keytaken == false:
-			body.keytaken = true
-			queue_free()
 
 func _process(delta: float) -> void:
 	if keytaken == true: 
@@ -16,5 +11,12 @@ func _process(delta: float) -> void:
 
 
 
-func _on_wallcheck_body_entered(body: Node2D) -> void:
+
+func _on_player_detection_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		if keytaken == false:
+			body.keytaken = true
+			queue_free()
+
+func _on_collide_detection_body_entered(body: Node2D) -> void:
 	queue_free()
