@@ -66,7 +66,7 @@ func get_cost(enemy):
 		BASIC_ENEMY:
 			return BASIC_ENEMY_COST
 		SHAMAN_ENEMY:
-			return SHAMAN_ENEMY_COST + LoopCount.loops
+			return SHAMAN_ENEMY_COST
 		SUICIDE_ENEMY:
 			return SUICIDE_ENEMY_COST
 		
