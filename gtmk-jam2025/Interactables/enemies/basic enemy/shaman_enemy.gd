@@ -21,7 +21,8 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 
 
 func _on_timer_timeout() -> void:
-	shoot()
+	if not dead:
+		shoot()
 	
 func shoot():
 	animated_sprite.play("shoot")

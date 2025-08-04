@@ -78,9 +78,7 @@ func get_shoot_array():
 	var shooting_array = action_recorder.shooting_array
 	return shooting_array
 
-func get_animation_array():
-	var animation_array = action_recorder.animation_array
-	return animation_array
+
 
 func next_loop():
 	keytaken = false

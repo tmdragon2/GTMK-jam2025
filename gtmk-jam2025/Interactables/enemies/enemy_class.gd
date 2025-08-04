@@ -49,6 +49,10 @@ func die():
 	queue_free()
 
 		
-		
+func _ready():
+	SignalBus.connect("next_loop", next_loop)
+	
+func next_loop():
+	queue_free()
 		
 		

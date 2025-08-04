@@ -21,8 +21,8 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 		audio_stream_player.play()
 		is_detonating = true
 		animated_sprite_2d.play("die")
-		await animated_sprite_2d.animation_finished
 		body.die()
+		await animated_sprite_2d.animation_finished
 		queue_free()
 	
 func die():
